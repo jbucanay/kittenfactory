@@ -82,6 +82,7 @@ CREATE TABLE employee (
 ;
 CREATE TABLE order_table (
 	order_id INT(11) NOT NULL AUTO_INCREMENT,
+	customer_id INT(11) NOT NULL,
 	employee_id INT(11) NOT NULL,
 	order_dttm DATETIME NOT NULL,
 	total_price DECIMAL(8,2) NOT NULL,
