@@ -1,5 +1,4 @@
 <?php
-#Home Page
 echo <<<_END
 		<title>Home</title>
 		<a href='AboutUs.php'><button> About Us </button></a>
@@ -13,18 +12,20 @@ echo <<<_END
 		</header>
 		<body>
 			<h1> Kitten Factory </h1>
-			<h2> Custom Carbon Fiber Skis </h2>
+			<h2> Make Payment </h2>
+			<form method='POST' action='ViewOrders.php'>
+			<br>
+			Credit Card <input type='text'>
+			<br>
+			<input type='submit' value='Process Payment'>
+			</form>
+			<footer>
+				<a href='ViewOrders.php'><button> View Orders </button></a>
+				<a href='ViewCart.php'><button> View Cart </button></a>
+			</footer>
 		</body>
-		<footer>
-			<button> Employee Login </button>
-		</footer>
 _END;
 
 
 
-
-
-
-
 ?>
-
