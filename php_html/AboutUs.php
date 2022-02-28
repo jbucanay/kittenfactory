@@ -1,13 +1,15 @@
 <html>
+	<head>
 		<title>About Us</title>
-		<a href='AboutUs.php'><button> About Us </button></a>
-		<a href='Shop.php'><button> Shop </button></a>
-		<a href='Login.php'><button> Login </button></a>
-		<link rel='stylesheet' href='formatting.css'>
+		<link rel='stylesheet' href='../css/formatting.css'>
+	</head>
 		<header>
-		<a href='HomePage.php'><img src='logo.png'
-		width= "200"
-		height="200" /></a>
+			<a href='HomePage.php'>
+				<img src='../images/logo.png' width= "200" height="200" />
+			</a>
+			<a href='AboutUs.php'><button> About Us </button></a>
+			<a href='Shop.php'><button> Shop </button></a>
+			<a href='Login.php'><button> Login </button></a>
 		</header>
 		<body>
 			<h1> Kitten Factory </h1>
@@ -24,15 +26,5 @@
 
 <?php
 # kittenfactory
-
-
-
-
-
-
-
-
-
-
 
 ?>
