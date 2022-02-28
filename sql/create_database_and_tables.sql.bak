@@ -50,6 +50,7 @@ CREATE TABLE product (
 	ski_length DECIMAL(5,2) NOT NULL,
 	ski_width DECIMAL(4,2) NOT NULL,
 	description BLOB,
+	quantity_available INT(7) NOT NULL,
 	PRIMARY KEY(product_id)
 )
 ;

@@ -44,7 +44,6 @@ CREATE TABLE material_purchase (
 CREATE TABLE product (
 	product_id INT(11) NOT NULL AUTO_INCREMENT,
 	ski_name VARCHAR(100) NOT NULL,
-	size_pricing DECIMAL(8,2) NOT NULL,
 	makeup VARCHAR(30) NOT NULL,
 	manufacturing_cost DECIMAL(8,2) NOT NULL,
 	ski_length DECIMAL(5,2) NOT NULL,
