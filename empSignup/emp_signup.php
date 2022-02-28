@@ -8,7 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <style type="text/css">
       <?php
-      include 'login.css'
+      include 'emp_signup.css'
       ?>
 
     </style>
@@ -16,30 +16,33 @@
         include_once "../home/home.php";
         
     ?>
-    <title>Login</title>
+    <title>Employee Signup</title>
 </head>
 <body>
 
 <form class="col-lg-6 offset-lg-3 ">
-<div class="d-grid gap-2 d-md-flex justify-content-md-end" id='signup'>
-  <a href="../empSignup/emp_signup.php"><button class="btn btn-primary me-md-2" type="button">Employee Signup</button></a>
-  <button class="btn btn-primary" type="button">Customer Signup</button>
-</div>
+
 <div id='formcont'>
         <div class="row mb-3">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">User Name</label>
+          <label for="inputEmail3" class="col-sm-2 col-form-label">First Name</label>
           <div class="col-sm-10">
             <input type="text" class="form-control">
           </div>
         </div>
         <div class="row mb-3">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+          <label for="inputEmail3" class="col-sm-2 col-form-label">Last Name</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword3">
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Position</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" >
           </div>
         </div>
         
-        <button type="submit" class="btn btn-primary" ><a href="#" target="_self" class='atag'>Sign in</a></button>
+        <button type="submit" class="btn btn-primary" ><a href="#" target="_self" class='atag'>Submit</a></button>
         </div>
     </form>
 </body>
