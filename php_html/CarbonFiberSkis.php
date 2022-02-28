@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Home</title>
+		<title>Carbon Fiber Skis</title>
 		<link rel='stylesheet' href='../css/formatting.css'>
 	</head>	
 	<header>

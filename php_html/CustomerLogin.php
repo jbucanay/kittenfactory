@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Home</title>
+		<title>Customer Login</title>
 		<link rel='stylesheet' href='../css/formatting.css'>
 	</head>
 	<header>
