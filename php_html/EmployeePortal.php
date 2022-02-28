@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Customer Login</title>
+		<title>Employee Portal</title>
 		<link rel='stylesheet' href='../css/formatting.css'>
 	</head>
 	<header>
@@ -11,18 +11,15 @@
 		<a href='Shop.php'><button> Shop </button></a>
 		<a href='Login.php'><button> Login </button></a>
 	</header>
-		<body>
-			<h1> Kitten Factory </h1>
-			<h2> Customer Login </h2>
-			<br>
-			<button> View Orders </button>
-			<button> Make Payment </button>
-			<button> Start Return </button>
-		</body>
+	<body>
+		<h1> Kitten Factory </h1>
+		<h2> Employee Portal </h2>
+		<br>
+		<button> Team and Org-Chart </button>
+		<button> Customer and Order Management </button>
+		<button> Raw Materials Management </button>
+	</body>
 </html>
-
-
 <?php
-# kittenfactory
 
 ?>

@@ -16,7 +16,7 @@
 		<h2> Custom Carbon Fiber Skis </h2>
 	</body>
 	<footer>
-		<button> Employee Login </button>
+		<a href='EmployeeLogin.php'><button> Employee Login </button></a>
 	</footer>
 </html>
 
