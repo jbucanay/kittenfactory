@@ -16,9 +16,7 @@
 		<h2> Hybrid Skis </h2>
 		<div class="row">
 			<div class='column'>
-				<img src='../images/hybridskis.png'
-				width='600'
-				height='400'/>
+				<img src='../images/hybridskis.png' width='600' height='400'/>
 				<br>
 				$800
 				<br>
