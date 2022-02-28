@@ -33,15 +33,15 @@
   </div>
 </div>
 <div class="card" style="width: 18rem;">
-  <img src="../images/cfskis.png" class="card-img-top" alt="...">
+  <img src="../images/hybridskis.png" class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">Powder ski</p>
+    <p class="card-text">All Mountain</p>
   </div>
 </div>
 <div class="card" style="width: 18rem;">
-  <img src="../images/cfskis.png" class="card-img-top" alt="...">
+  <img src="../images/hybridskis.png" class="card-img-top" alt="...">
   <div class="card-body">
-    <p class="card-text">Powder ski</p>
+    <p class="card-text">Touring</p>
   </div>
 </div>
 </main>
