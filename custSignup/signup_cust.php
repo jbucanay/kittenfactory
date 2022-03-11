@@ -36,6 +36,9 @@ try {
         // if user does not exist create the new user
         if(!$res){
             $hash_pass = password_hash($password,PASSWORD_DEFAULT);
+            $sql = "INSERT INTO customer (first_name, last_name, address, user_name,password) VALUES (?,?,?,?,?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$first_name,$last_name,$address,$user_name,$password]);
         
         } else {
             //handle user when username already exist
@@ -50,7 +53,7 @@ try {
     }
     // create an error when the form is not complete
     else {
-        echo 'not complete';
+        echo 'Please complete the form';
     }
 
 
