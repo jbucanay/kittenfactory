@@ -43,7 +43,7 @@
       if(isset($_SESSION['username'])){
         echo <<<_END
         <li class="nav-item">
-          <a class="nav-link" href="../login/login.php">Sign out</a>
+          <a class="nav-link" href="./signout.php">Sign out</a>
         </li>
 
       _END;
