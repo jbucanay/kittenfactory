@@ -39,7 +39,11 @@
           </div>
         </div>
         
+<<<<<<< HEAD
         <button type="submit" class="btn btn-primary" ><a href="../shop/shop.php" target="_self" class='atag'>Sign in</a></button>
+=======
+        <button type="submit" class="btn btn-primary" ><a href="../vieworders/vieworders.php" target="_self" class='atag'>Sign in</a></button>
+>>>>>>> ashley
         </div>
     </form>
 </body>
