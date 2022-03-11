@@ -12,19 +12,34 @@
       ?>
 
     </style>
-    <?php 
-        include_once "../home/home.php";
-        
-    ?>
+<?php 
+session_start();
+if(isset($_SESSION['username'])){
+	$username = $_SESSION['username'];
+		
+	echo "Welcome back $username <br>";
+	}else{
+	echo "Please login.<br>";
+}
+
+
+include_once "../home/home.php";
+require_once "../login/logininfo.php";
+
+$conn = new mysqli($hn, $un, $pw, $db);
+if($conn->connect_error) die($conn->connect_error);
+
+	
+echo <<<_END
     
 </head>
 	
 		<body>
 			
 			<h2> Make Payment </h2>
-			<form method='POST' action='../vieworders/ViewOrders.php'>
+			<form method='POST'>
 			<br>
-			Credit Card <input type='text'>
+			Credit Card <input type='text' name='credit_card'>
 			<br>
 			<input type='submit' value='Process Payment'>
 			</form>
@@ -35,6 +50,16 @@
 		</body>
 
 
-<?php
-
+_END;
+if (isset($_POST['credit_card'])) {
+	$creditcard= $_POST['credit_card'];
+	
+	$insertpayment = "INSERT INTO payment (pmt_dttm,credit_card) 
+	VALUES (CURRENT_TIMESTAMP,'$creditcard')";
+			
+	$payment = $conn->query($insertpayment); 
+	if(!$payment) die($conn->error);
+			
+	$rows = $payment->num_rows;
+	}
 ?>

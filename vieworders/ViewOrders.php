@@ -1,3 +1,20 @@
+<?php
+	
+session_start();
+
+if(isset($_SESSION['username'])){
+	$username = $_SESSION['username'];
+	
+	echo "Welcome back $username <br>";
+}else{
+	echo "Please login.<br>";
+}
+	
+	
+?>
+
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +37,7 @@ if($conn->connect_error) die($conn->connect_error);
         
 $query = "SELECT * FROM order_line ol JOIN order_table ot ON 
 ol.order_id=ot.order_id JOIN customer c ON c.customer_id=ot.customer_id 
-WHERE c.username='$un'";
+WHERE c.username='$username'";
         
 $result = $conn->query($query); 
 if(!$result) die($conn->error);
@@ -54,31 +71,70 @@ echo "</table>";
 echo <<<_END
 <br>
 <br>
+
 <h2> Return Order</h2>
 <form method='POST'>
-Order ID: <input type='text'>
+Order ID: <input type='text' name='order_id'>
+<br>
+Quantity: <input type='text' name='quantity'>
 <br>
 <input type='submit' value='Return'>
 </form>
 </div>
+
 <div class="card">
-<h2>Manage Order</h2>
+<h2>Cancel Order</h2>
 <form method='POST'>
-Order ID: <input type='text'>
+Order ID: <input type='text' name='order_id_cancel'>
 <br>
-Update Address: <input type='text'>
-<br>
-Update Quantity: <input type='text'>
-<br>
-Cancel Order? <input type='checkbox'>
-<br>
-<input type='submit' value='Update'>
+<input type='submit' value='Cancel'>
 </form>
 </div>
+
 </body>
 <footer>
 <a href='../payment/Payment.php'><button> Make Payment </button></a>
 <a href='../viewcart/ViewCart.php'><button> View Cart </button></a>
 </footer>
 _END;
+
+if (isset($_POST['order_id']) && isset($_POST['quantity'])) {
+$order_id = $_POST['order_id'];
+$quantity = $_POST['quantity'];
+
+$returnorder = "INSERT INTO return_table (return_dttm,order_id,quantity_returned) 
+VALUES (CURRENT_TIMESTAMP,'$order_id','$quantity')";
+        
+$return = $conn->query($returnorder); 
+if(!$return) die($conn->error);
+        
+$rows = $return->num_rows;
+}
+if (isset($_POST['order_id_cancel'])) {
+$order_id_cancel = $_POST['order_id_cancel'];
+
+
+
+$cancelorderreturn = "DELETE FROM return_table
+WHERE order_id = '$order_id_cancel' ";
+
+$cancelorder = "DELETE FROM order_line
+WHERE order_id = '$order_id_cancel' ";
+
+$cancelordertable = "DELETE FROM order_table 
+WHERE order_id = '$order_id_cancel' ";	
+
+
+
+$cancelreturn = $conn->query($cancelorderreturn);
+if(!$cancelreturn) die($conn->error);
+			
+$cancel = $conn->query($cancelorder); 
+if(!$cancel) die($conn->error);
+
+$canceltable = $conn->query($cancelordertable); 
+if(!$canceltable) die($conn->error);
+			
+$rows = $cancel->num_rows;
+}
 ?>

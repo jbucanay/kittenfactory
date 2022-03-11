@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION['username'])){
+	$username = $_SESSION['username'];
+	
+	echo "Welcome back $username <br>";
+}else{
+	echo "Please login.<br>";
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
