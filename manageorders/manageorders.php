@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,25 +9,25 @@
     <style type="text/css">
       <?php
       include 'login.css'
+     
       ?>
 
     </style>
-    <?php 
-        include_once "../home/home.php";
-        require_once "../login/logininfo.php";
+<?php 
+include_once "../home/home.php";
+require_once "../login/logininfo.php";
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
         
-$query = "SELECT * FROM order_line ol JOIN order_table ot ON 
-ol.order_id=ot.order_id JOIN customer c ON c.customer_id=ot.customer_id 
-WHERE c.username='$un'";
+$query = "SELECT * FROM order_line";
         
 $result = $conn->query($query); 
 if(!$result) die($conn->error);
         
 $rows = $result->num_rows;
         
+
 echo <<<_END
     <title>Login</title>
 </head>
@@ -52,33 +53,32 @@ echo "</tr>";
 }
 echo "</table>";
 echo <<<_END
-<br>
-<br>
-<h2> Return Order</h2>
-<form method='POST'>
-Order ID: <input type='text'>
-<br>
-<input type='submit' value='Return'>
-</form>
-</div>
-<div class="card">
-<h2>Manage Order</h2>
-<form method='POST'>
-Order ID: <input type='text'>
-<br>
-Update Address: <input type='text'>
-<br>
-Update Quantity: <input type='text'>
-<br>
-Cancel Order? <input type='checkbox'>
-<br>
-<input type='submit' value='Update'>
-</form>
-</div>
+</pre>
+				</div>
+				<div class='card'>
+				<h2> Return Order</h2>
+					<form method='POST'>
+					Order ID: <input type='text'>
+					<br>
+					<input type='submit' value='Return'>
+					</form>
+				</div>
+				<div class="card">
+					<h2>Manage Order</h2>
+					<form method='POST'>
+					Order ID: <input type='text'>
+					<br>
+					Update Product: <input type='text'>
+					<br>
+					Update Quantity: <input type='text'>
+					<br>
+					Cancel Order? <input type='checkbox'>
+					<br>
+					<input type='submit' value='Update'>
+					</form>
+			</div>
 </body>
-<footer>
-<a href='../payment/Payment.php'><button> Make Payment </button></a>
-<a href='../viewcart/ViewCart.php'><button> View Cart </button></a>
-</footer>
 _END;
+
 ?>
+
