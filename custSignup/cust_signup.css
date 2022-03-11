@@ -1,0 +1,20 @@
+
+.atag {
+    
+    text-decoration: none;
+    color: white;
+}
+
+.atag:hover {
+    color: white;
+}
+
+#formcont{
+
+    
+    margin-top: 5%;
+}
+
+#signup {
+    margin-top: 2%;
+}
