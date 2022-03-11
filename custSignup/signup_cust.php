@@ -19,36 +19,34 @@ try {
         && !empty(($_POST['first_name']))
         && !empty(($_POST['last_name']))
         && !empty(($_POST['address']))
-        && !empty(($_POST['user_name']))
+        && !empty(($_POST['username']))
         && !empty(($_POST['password']))
         )
     {
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
         $address = $_POST['address'];
-        $user_name = $_POST['user_name'];
+        $username = $_POST['username'];
         $password = $_POST['password'];
         
-        $qr = "SELECT * FROM customer WHERE user_name = '$user_name'";
-        $res = $conn->query($qr);
-        print_r($res);
+        $token = password_hash($password,PASSWORD_DEFAULT); 
 
-
-       
-        
+        $newuserquery = "INSERT INTO customer (first_name, last_name, address, username, password) 
+        VALUES ('$first_name','$last_name','$address','$username','$token')";
+      
+        $result = $conn->query($newuserquery);
+        if(!$result) die($conn->error);
         
     }
-    else {
-        echo 'not complete';
-    }
+    
 
 
 
-
-} catch (PDOException $e){
-    echo "Connection failed: " .$e->getMessage();
+}
+catch (PDOException $e){
+echo "Connection failed: " .$e->getMessage();
 }
 
-
+echo "<a href='../login/login.php'>Log In</a>"
 
 ?>

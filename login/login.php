@@ -14,33 +14,32 @@
     </style>
     <?php 
         include_once "../home/home.php";
-        
+       
     ?>
     <title>Login</title>
 </head>
 <body>
 
-<form class="col-lg-6 offset-lg-3 ">
+<form class="col-lg-6 offset-lg-3" method='POST' action='logininfo.php'>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end" id='signup'>
   <a href="../empSignup/emp_signup.php"><button class="btn btn-primary me-md-2" type="button">Employee Signup</button></a>
   <a href="../custSignup/cust_signup.php"><button class="btn btn-primary" type="button">Customer Signup</button></a>
 </div>
 <div id='formcont'>
         <div class="row mb-3">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">User Name</label>
+          <label for="username" class="col-sm-2 col-form-label">Username</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" name="username">
           </div>
         </div>
         <div class="row mb-3">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+          <label for="password" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword3">
+            <input type="password" class="form-control" name="password">
           </div>
         </div>
-        
-
-        <button type="submit" class="btn btn-primary" ><a href="../vieworders/vieworders.php" target="_self" class='atag'>Sign in</a></button>
+        <button type="submit" class="btn btn-primary">
+        <a target="_self" class='atag'>Sign in</a></button>
         </div>
     </form>
 </body>
