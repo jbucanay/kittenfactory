@@ -19,56 +19,36 @@ try {
         && !empty(($_POST['first_name']))
         && !empty(($_POST['last_name']))
         && !empty(($_POST['address']))
-        && !empty(($_POST['user_name']))
+        && !empty(($_POST['username']))
         && !empty(($_POST['password']))
         )
     {
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
         $address = $_POST['address'];
-        $user_name = $_POST['user_name'];
+        $username = $_POST['username'];
         $password = $_POST['password'];
         
-        // check if user already exists
-        // documentation for PDO fetch: https://phpdelusions.net/pdo/fetch_modes
-        $qr = "SELECT * FROM customer WHERE user_name = '$user_name'";
-        $res = $conn->query($qr)->fetch(PDO::FETCH_ASSOC);
-        // if user does not exist create the new user
-        if(!$res){
-            $token = password_hash($password,PASSWORD_DEFAULT);
-            $sql = "INSERT INTO customer (first_name, last_name, address, user_name,password) VALUES (?,?,?,?,?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute([$first_name,$last_name,$address,$user_name,$token]);
 
-            //when account is created, start a new sessions and navigate to the shop
-            session_start(['cookie_lifetime' => 86400,]);
-            $_SESSION['username'] = $user_name;
-
-            header("Location: ../shop/shop.php");
-        
-        } else {
-            //handle user when username already exist
-            echo "username taken, try again";
-        }
-        
+        $token = password_hash($password,PASSWORD_DEFAULT); 
 
 
-       
-        
+        $newuserquery = "INSERT INTO customer (first_name, last_name, address, username, password) 
+        VALUES ('$first_name','$last_name','$address','$username','$token')";
+      
+        $result = $conn->query($newuserquery);
+        if(!$result) die($conn->error);
         
     }
-    // create an error when the form is not complete
-    else {
-        echo 'Please complete the form';
-    }
 
 
 
 
-} catch (PDOException $e){
-    echo "Connection failed: " .$e->getMessage();
+}
+catch (PDOException $e){
+echo "Connection failed: " .$e->getMessage();
 }
 
-
+echo "<a href='../login/login.php'>Log In</a>"
 
 ?>
