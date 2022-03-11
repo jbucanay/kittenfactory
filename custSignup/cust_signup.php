@@ -8,52 +8,53 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <style type="text/css">
       <?php
-      include 'cust_signup.css'
+      include 'cust_signup.css';
+      
       ?>
 
     </style>
     <?php 
         include_once "../home/home.php";
-        
+        include "signup_cust.php";
     ?>
     <title>Customer Signup</title>
 </head>
 <body>
 
-<form class="col-lg-6 offset-lg-3 ">
+<form class="col-lg-6 offset-lg-3 " action="cust_signup.php" method="POST">
 
 <div id='formcont'>
         <div class="row mb-3">
           <label for="inputEmail3" class="col-sm-2 col-form-label">First Name</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" name="first_name">
           </div>
         </div>
         <div class="row mb-3">
           <label for="inputEmail3" class="col-sm-2 col-form-label">Last Name</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" name="last_name">
           </div>
         </div>
         <div class="row mb-3">
           <label for="inputPassword3" class="col-sm-2 col-form-label">Address</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" >
+            <input type="text" class="form-control" name="address">
           </div>
         </div>
         <div class="row mb-3">
           <label for="inputEmail3" class="col-sm-2 col-form-label">User Name</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" name="user_name">
           </div>
         </div>
         <div class="row mb-3">
           <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword3">
+            <input type="password" class="form-control" id="inputPassword3" name='password'>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" ><a href="../shop/shop.php" target="_self" class='atag'>Submit</a></button>
+        <button type="submit" class="btn btn-primary" ><a target="_self" class='atag'>Submit</a></button>
         </div>
     </form>
 </body>

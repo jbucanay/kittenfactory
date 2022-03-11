@@ -21,30 +21,6 @@
 <body >
 <main id='main'>
 <div class="card" style="width: 18rem;">
-<<<<<<< HEAD
-  <img src="../images/cfskis.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Powder ski</p>
-  </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img src="../images/cfskis.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Powder ski</p>
-  </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img src="../images/hybridskis.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">All Mountain</p>
-  </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img src="../images/hybridskis.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <p class="card-text">Touring</p>
-  </div>
-=======
   <img src="../images/cfskis.png" class="card-img-top" alt="..." >
   	<a href='../carbonfiber/carbonfiber.php' class='btn btn-info' >
   <div class="card-body">
@@ -59,7 +35,6 @@
     <p class="card-text">Hybrid</p>
   </div>
   </a>
->>>>>>> ashley
 </div>
 </main>
 </body>
