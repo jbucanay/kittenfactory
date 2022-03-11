@@ -29,7 +29,9 @@ try {
         $username = $_POST['username'];
         $password = $_POST['password'];
         
+
         $token = password_hash($password,PASSWORD_DEFAULT); 
+
 
         $newuserquery = "INSERT INTO customer (first_name, last_name, address, username, password) 
         VALUES ('$first_name','$last_name','$address','$username','$token')";
@@ -38,7 +40,7 @@ try {
         if(!$result) die($conn->error);
         
     }
-    
+
 
 
 
