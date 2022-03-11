@@ -36,10 +36,30 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="../about/aboutus.php">About</a>
         </li>
- 
+      <?php
+
+      session_start();
+
+      if(isset($_SESSION['username'])){
+        echo <<<_END
+        <li class="nav-item">
+          <a class="nav-link" href="../login/login.php">Sign out</a>
+        </li>
+
+      _END;
+      
+      } 
+      else {
+        echo <<<_END
         <li class="nav-item">
           <a class="nav-link" href="../login/login.php">Login</a>
         </li>
+
+      _END;
+      }
+      
+     
+      ?>
         
         <li class="nav-item">
           <a class="nav-link" href="../viewcart/viewcart.php"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
