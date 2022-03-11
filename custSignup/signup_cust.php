@@ -29,15 +29,26 @@ try {
         $user_name = $_POST['user_name'];
         $password = $_POST['password'];
         
+        // check if user already exists
+        // documentation for PDO fetch: https://phpdelusions.net/pdo/fetch_modes
         $qr = "SELECT * FROM customer WHERE user_name = '$user_name'";
-        $res = $conn->query($qr);
-        print_r($res);
+        $res = $conn->query($qr)->fetch(PDO::FETCH_ASSOC);
+        // if user does not exist create the new user
+        if(!$res){
+            $hash_pass = password_hash($password,PASSWORD_DEFAULT);
+        
+        } else {
+            //handle user when username already exist
+            echo "username taken, create another one";
+        }
+        
 
 
        
         
         
     }
+    // create an error when the form is not complete
     else {
         echo 'not complete';
     }
