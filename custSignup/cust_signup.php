@@ -14,13 +14,13 @@
     </style>
     <?php 
         include_once "../home/home.php";
-        
+        include_once "./cust_signup.php"
     ?>
     <title>Customer Signup</title>
 </head>
 <body>
 
-<form class="col-lg-6 offset-lg-3 ">
+<form class="col-lg-6 offset-lg-3 " action="cust_signup.php" method="POST">
 
 <div id='formcont'>
         <div class="row mb-3">
@@ -53,7 +53,7 @@
             <input type="password" class="form-control" id="inputPassword3">
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" ><a href="../shop/shop.php" target="_self" class='atag'>Submit</a></button>
+        <button type="submit" class="btn btn-primary" ><a target="_self" class='atag'>Submit</a></button>
         </div>
     </form>
 </body>
