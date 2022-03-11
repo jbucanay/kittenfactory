@@ -35,14 +35,20 @@ try {
         $res = $conn->query($qr)->fetch(PDO::FETCH_ASSOC);
         // if user does not exist create the new user
         if(!$res){
-            $hash_pass = password_hash($password,PASSWORD_DEFAULT);
+            $token = password_hash($password,PASSWORD_DEFAULT);
             $sql = "INSERT INTO customer (first_name, last_name, address, user_name,password) VALUES (?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt->execute([$first_name,$last_name,$address,$user_name,$password]);
+            $stmt->execute([$first_name,$last_name,$address,$user_name,$token]);
+
+            //when account is created, start a new sessions and navigate to the shop
+            session_start(['cookie_lifetime' => 86400,]);
+            $_SESSION['username'] = $user_name;
+
+            header("Location: ../shop/shop.php");
         
         } else {
             //handle user when username already exist
-            echo "username taken, create another one";
+            echo "username taken, try again";
         }
         
 
