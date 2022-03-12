@@ -22,8 +22,7 @@
 
 <form class="col-lg-6 offset-lg-3" method='POST' action='logininfo.php'>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end" id='signup'>
-  <a href="../empSignup/emp_signup.php"><button class="btn btn-primary me-md-2" type="button">Employee Signup</button></a>
-  <a href="../custSignup/cust_signup.php"><button class="btn btn-primary" type="button">Customer Signup</button></a>
+  <a href="../custSignup/cust_signup.php"><button class="btn btn-primary" type="button">Signup</button></a>
 </div>
 <div id='formcont'>
         <div class="row mb-3">
