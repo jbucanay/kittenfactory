@@ -19,6 +19,50 @@
     ?>
 </head>
 <body>
+    <?php 
+
+$sn = "localhost:8889";
+$un = "root";
+$pw = "root";
+$db = "kitten_factory";
+
+
+$user = $_SESSION['username'];
+
+try {
+    $conn = new PDO("mysql:host=$sn;dbname=$db", $un,$pw);
+    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $res = $conn->query("SELECT * FROM users where username = '$user'")->fetch(PDO::FETCH_ASSOC);
+    print_r($res);
+    echo "<br>";
+    echo <<<_end
+        <div class="card">
+        <div class="card-header">
+        <p>$res[first_name] $res[last_name]</p>
+        </div>
+        <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    _end;
+    
+
+    
+
+
+}
+
+catch (PDOException $e){
+    echo "Connection failed: " .$e->getMessage();
+    }
+    
+    
+    
+    
+    
+    ?>
     
 </body>
 </html>
@@ -34,38 +78,3 @@
 
 
 
-
-
-
-
-
-
-
-
-<?php 
-$sn = "localhost:8889";
-$un = "root";
-$pw = "root";
-$db = "kitten_factory";
-
-
-$user = $_SESSION['username'];
-
-try {
-    $conn = new PDO("mysql:host=$sn;dbname=$db", $un,$pw);
-    $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-    
-
-
-}
-
-catch (PDOException $e){
-    echo "Connection failed: " .$e->getMessage();
-    }
-
-
-
-
-
-?>
