@@ -13,7 +13,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	$tmp_username = mysql_fix_string($conn, $_POST['username']);
 	$tmp_password = mysql_fix_string($conn, $_POST['password']);
 	
-	$query = "SELECT password FROM customer WHERE username = '$tmp_username'";
+	$query = "SELECT password FROM users WHERE username = '$tmp_username'";
 	
 	$result = $conn->query($query); 
 	if(!$result) die($conn->error);
@@ -41,6 +41,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	else
 	{
 		echo "Login Error<br>";
+	
 	}
 	
 }

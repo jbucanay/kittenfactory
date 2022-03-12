@@ -1,0 +1,14 @@
+#title {
+    
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+    margin-left: 5%;
+}
+
+#buttons_cont {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}

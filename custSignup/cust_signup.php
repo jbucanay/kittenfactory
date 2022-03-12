@@ -17,7 +17,7 @@
         include_once "../home/home.php";
         include "signup_cust.php";
     ?>
-    <title>Customer Signup</title>
+    <title>Signup</title>
 </head>
 <body>
         
