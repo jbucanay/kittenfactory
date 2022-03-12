@@ -22,7 +22,7 @@
 
 <form class="col-lg-6 offset-lg-3" method='POST' action='logininfo.php'>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end" id='signup'>
-  <a href="../custSignup/cust_signup.php"><button class="btn btn-primary" type="button">Signup</button></a>
+  <a href="../custSignup/cust_signup.php"><button class="btn btn-dark" type="button">Signup</button></a>
 </div>
 <div id='formcont'>
         <div class="row mb-3">
@@ -37,7 +37,7 @@
             <input type="password" class="form-control" name="password">
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-dark">
         <a target="_self" class='atag'>Sign in</a></button>
         </div>
     </form>

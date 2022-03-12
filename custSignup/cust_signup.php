@@ -25,7 +25,7 @@
 
 <form class="col-lg-6 offset-lg-3 " action="signup_cust.php" method="POST">
         </div>
-        <button class="btn btn-primary">
+        <button class="btn btn-dark">
         <a href="../login/login.php" class='atag'>Sign in</a></button>
         </div>
 <div id='formcont'>
@@ -59,7 +59,7 @@
             <input type="password" class="form-control" id="inputPassword3" name='password'>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" ><a class='atag'>Submit</a></button>
+        <button type="submit" class="btn btn-dark" ><a class='atag'>Submit</a></button>
         </div>
     </form>
 </body>

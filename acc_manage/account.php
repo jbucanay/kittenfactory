@@ -33,17 +33,18 @@ try {
     $conn = new PDO("mysql:host=$sn;dbname=$db", $un,$pw);
     $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $res = $conn->query("SELECT * FROM users where username = '$user'")->fetch(PDO::FETCH_ASSOC);
-    print_r($res);
+    // print_r($res);
+    
     echo "<br>";
     echo <<<_end
         <div class="card">
         <div class="card-header">
-        <p>$res[first_name] $res[last_name]</p>
+        $res[first_name] $res[last_name]
         </div>
         <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">$res[address]</h5>
+        <p class="card-text">Username: $res[username]</p>
+        <a href="#" class="btn btn-dark">Edit account</a>
         </div>
     </div>
     _end;
