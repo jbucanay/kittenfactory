@@ -130,7 +130,6 @@ CREATE TABLE return_table (
 	quantity_returned INT(3) NOT NULL,
 	PRIMARY KEY(return_id),
 	FOREIGN KEY(order_id) REFERENCES order_table(order_id),
-	FOREIGN KEY(product_id) REFERENCES ski_size_price_qty(product_id),
-	FOREIGN KEY(ski_size) REFERENCES ski_size_price_qty(ski_size)
+	FOREIGN KEY(product_id, ski_size) REFERENCES ski_size_price_qty(product_id, ski_size)
 )
 ;
