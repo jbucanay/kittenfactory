@@ -22,9 +22,9 @@
 		<h2> Employee Portal </h2>
 		<br>
 		<a href='../team_and_org_chart/team_and_org_chart.php'> 
-			<button> Team and Org-Chart </button>
+			<button> View Employees </button>
 		</a>
-		<button> Customer and Order Management </button>
+		<button> View and Manage Customers </button>
 	</body>
 
 
