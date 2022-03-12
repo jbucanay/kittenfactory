@@ -14,11 +14,11 @@ VALUES
 INSERT INTO
 	payment (pmt_dttm, credit_card)
 VALUES
-	(NOW(), '12345678902'),
-	(NOW(), '12345678903'),
-	(NOW(), '12345678904'),
-	(NOW(), '12345678905'),
-	(NOW(), '12345678906')
+	(NOW(), 12345678902),
+	(NOW(), 12345678903),
+	(NOW(), 12345678904),
+	(NOW(), 12345678905),
+	(NOW(), 12345678906)
 ;
 INSERT INTO
 	shipping (ship_dt, ship_cost)
@@ -30,10 +30,10 @@ VALUES
 	(CURRENT_DATE, 10.89)
 ;
 INSERT INTO 
-	product (ski_name, makeup)
+	product (ski_name, makeup, product_img_path)
 VALUES
 	('Carbon Fiber Skis', 'carbon_fiber'),
-	('Hybrid Skis', 'hybrid')
+	('Hybrid Skis', 'hybrid', '../Images/hybridskis.png')
 ;
 INSERT INTO
 	ski_size_price_qty (product_id, ski_size, price, quantity_available)

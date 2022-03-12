@@ -30,10 +30,10 @@ VALUES
 	(CURRENT_DATE, 10.89)
 ;
 INSERT INTO 
-	product (ski_name, makeup)
+	product (ski_name, makeup, product_img_path)
 VALUES
-	('Carbon Fiber Skis', 'carbon_fiber'),
-	('Hybrid Skis', 'hybrid')
+	('Carbon Fiber Skis', 'carbon_fiber', '../Images/cfskis.png'),
+	('Hybrid Skis', 'hybrid', '../Images/hybridskis.png')
 ;
 INSERT INTO
 	ski_size_price_qty (product_id, ski_size, price, quantity_available)

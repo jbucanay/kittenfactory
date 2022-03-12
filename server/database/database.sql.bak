@@ -13,9 +13,9 @@ CREATE TABLE customer (
 )
 ;
 CREATE TABLE payment (
-	pmt_id VARCHAR(13) NOT NULL AUTO_INCREMENT,
+	pmt_id INT(11) NOT NULL AUTO_INCREMENT,
 	pmt_dttm DATETIME NOT NULL,
-	credit_card INT(11) NOT NULL,
+	credit_card BIGINT(11) NOT NULL,
 	PRIMARY KEY(pmt_id)
 )
 ;
@@ -52,6 +52,7 @@ CREATE TABLE product (
 	-- manufacturing_cost DECIMAL(8,2) NOT NULL,
 	-- ski_width DECIMAL(4,2) NOT NULL,
 	description BLOB,
+	product_img_path VARCHAR(200)
 	PRIMARY KEY(product_id)
 )
 ;
