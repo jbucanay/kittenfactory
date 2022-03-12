@@ -14,11 +14,11 @@ VALUES
 INSERT INTO
 	payment (pmt_dttm, credit_card)
 VALUES
-	(NOW(), 12345678902),
-	(NOW(), 12345678903),
-	(NOW(), 12345678904),
-	(NOW(), 12345678905),
-	(NOW(), 12345678906)
+	(NOW(), '12345678902'),
+	(NOW(), '12345678903'),
+	(NOW(), '12345678904'),
+	(NOW(), '12345678905'),
+	(NOW(), '12345678906')
 ;
 INSERT INTO
 	shipping (ship_dt, ship_cost)
@@ -83,4 +83,10 @@ VALUES
 	(4, 1, 1, 180, 4, 2200),
 	(5, 1, 2, 175, 1, 400),
 	(5, 2, 2, 180, 1, 450)
+;
+INSERT INTO
+	return_table (return_dttm, order_id, product_id, ski_size, quantity_returned)
+VALUES
+	(NOW(), 2, 1, 180, 1),
+	(NOW(), 4, 1, 180, 2)
 ;

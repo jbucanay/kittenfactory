@@ -15,7 +15,7 @@ CREATE TABLE customer (
 CREATE TABLE payment (
 	pmt_id INT(11) NOT NULL AUTO_INCREMENT,
 	pmt_dttm DATETIME NOT NULL,
-	credit_card INT(11) NOT NULL,
+	credit_card BIGINT(11) NOT NULL,
 	PRIMARY KEY(pmt_id)
 )
 ;
