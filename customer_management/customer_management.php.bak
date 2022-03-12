@@ -25,7 +25,7 @@ for($j=0; $j<$rows; ++$j){
 	
 $row = $result->fetch_array(MYSQLI_ASSOC);
 
-echo <<<_END
+<<<_END
 
 	<pre>
 	First Name: $row[first_name]

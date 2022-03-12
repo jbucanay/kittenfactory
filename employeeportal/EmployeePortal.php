@@ -21,10 +21,12 @@
 	<body>
 		<h2> Employee Portal </h2>
 		<br>
-		<a href='../team_and_org_chart/team_and_org_chart.php'> 
+		<a href='../view_employees/view_employees.php'> 
 			<button> View Employees </button>
 		</a>
-		<button> View and Manage Customers </button>
+		<a href='../customer_management/customer_management.php'>
+			<button> View and Manage Customers </button>
+		</a>
 	</body>
 
 
