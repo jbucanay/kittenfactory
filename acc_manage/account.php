@@ -32,7 +32,7 @@ $user = $_SESSION['username'];
 try {
     $conn = new PDO("mysql:host=$sn;dbname=$db", $un,$pw);
     $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    $res = $conn->query("SELECT * FROM users where username = '$user'")->fetch(PDO::FETCH_ASSOC);
+    $res = $conn->query("SELECT * FROM customer where username = '$user'")->fetch(PDO::FETCH_ASSOC);
     // print_r($res);
     
     echo "<br>";

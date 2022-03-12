@@ -20,7 +20,7 @@ $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
         
 $query = "SELECT * FROM order_line ol JOIN order_table ot ON 
-ol.order_id=ot.order_id JOIN users c ON c.user_id=ot.customer_id 
+ol.order_id=ot.order_id JOIN customer c ON c.customer_id=ot.customer_id 
 WHERE c.username='$username'";
         
 $result = $conn->query($query); 

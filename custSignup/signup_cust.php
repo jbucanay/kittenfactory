@@ -34,12 +34,12 @@ try {
 
         //verify if username is already in the databse first before creating the user
 
-        $qry = "SELECT * FROM users WHERE username = '$username'";
+        $qry = "SELECT * FROM customer WHERE username = '$username'";
         $res = $conn->query($qry)->fetchAll(PDO::FETCH_ASSOC);
         // print_r($res);
 
         if(!$res){
-            $newuserquery = "INSERT INTO users (first_name, last_name, address, username, password) 
+            $newuserquery = "INSERT INTO customer (first_name, last_name, address, username, password) 
             VALUES ('$first_name','$last_name','$address','$username','$token')";
             $result = $conn->query($newuserquery);
             if(!$result){
