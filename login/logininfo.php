@@ -32,7 +32,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	{
 		echo "Login Successful! Welcome back $tmp_username<br>";
 		
-		session_start();
+		
 		$_SESSION['username']= $tmp_username;
 		
        
@@ -40,7 +40,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	}
 	else
 	{
-		echo "Login Error<br>";
+		header("Location: login.php");
 	
 	}
 	
