@@ -36,7 +36,7 @@ try {
 
         $qry = "SELECT * FROM users WHERE username = '$username'";
         $res = $conn->query($qry)->fetchAll(PDO::FETCH_ASSOC);
-        print_r($res);
+        // print_r($res);
 
         if(!$res){
             $newuserquery = "INSERT INTO users (first_name, last_name, address, username, password) 
