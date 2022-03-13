@@ -34,6 +34,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 		
 		
 		$_SESSION['username']= $tmp_username;
+		if(empty($_SESSION['cart'])){
+			$_SESSION['cart'] = array();
+		}
 		
        header("Location: ../vieworders/ViewOrders.php");
 	}

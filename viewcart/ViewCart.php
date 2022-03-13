@@ -17,33 +17,24 @@
     <title>View Cart</title>
 </head>
 
-<h2> View Cart </h2>
+
 		<body>
+			<?php
 			
-			<form method='POST' action='../payment/Payment.php'>
-			Carbon Fiber Skis (Quantity): 
-			<br>
-			Length:
-			<br>
-			Color:
-			<br>
-			Hybrid Skis (Quantity):
-			<br>
-			Length:
-			<br>
-			Color:
-			<br>
-			Cart Total:
-			<br>
-			<input type='submit' value='Proceed to Payment'>
-			</form>
-				<footer>
-					<a href='../vieworders/ViewOrders.php'><button> View Orders </button></a>
-				</footer>
+			
+			
+			array_push($_SESSION['cart'], $_POST);
+			print_r($_SESSION['cart']);
+			
+			
+
+
+			
+			
+			?>
+		
 			
 		</body>
 
 
 
-<?php
-?>

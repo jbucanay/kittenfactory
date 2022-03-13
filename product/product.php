@@ -19,16 +19,9 @@
     ?>
 </head>
 <body>
+<main id='pro_main'>
     <?php 
-    // print_r($_SESSION['cart']);
-    // echo "<br>";
-    // echo $_GET['product_id'];
-    // echo "<br>";
-    // echo "<br>";
-
-//     SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
-// FROM Orders
-// INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+   
 
 $sn = "localhost:8889";
 $un = "root";
@@ -39,6 +32,7 @@ $db = "kitten_factory";
         $conn = new PDO("mysql:host=$sn;dbname=$db", $un,$pw);
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $product_id = $_GET['product_id'];
+        
         // ski_size_price_qty COLUMNS: 	
                 //product_id
                 //ski_size
@@ -54,6 +48,8 @@ $db = "kitten_factory";
             $get_prod = $conn->prepare("SELECT ski_name,product_img_path FROM product WHERE product_id = $product_id");
             $get_prod->execute();
             $product = $get_prod->fetchAll(PDO::FETCH_ASSOC);
+            $ski_name = $product[0]['ski_name'];
+            $ski_img = $product[0]['product_img_path'];
             
             
         
@@ -66,62 +62,47 @@ $db = "kitten_factory";
         $prep = $conn->prepare($qry);
         $prep->execute();
         $res = $prep->fetchAll(PDO::FETCH_ASSOC);
-        print_r($res);
-        echo "<br>";
-        
-        echo "<br>";
+        // print_r($res);
 
         for($i=0;$i<count($res);++$i){
         
-        
-        $price = 0;
-        $ski_sizes = array_column($res, 'ski_size');
-        echo $ski_sizes[$i];
-        echo "<br>";
+        $price = $res[$i]['price'];
+        $size = $res[$i]['ski_size'];
+        $available = $res[$i]['quantity_available'];
         
         
+        
+        echo <<<_end
+        <form class="card" style="width: 30rem;" id='form_card' action="../viewcart/ViewCart.php" method="post">
+        <h5 class="card-title text-center" value='$ski_name' name='ski_name'>$ski_name</h5>
+        
+        <div class="card-body">
+        <img src="$ski_img" class="card-img-top" alt="..." value="$ski_img" name='image'>
+        <input value='$product_id' name='product_id' hidden></input>
+        <input value='$price' name='price' hidden>$$price</input>
+            <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Quantity</label>
+            <input type="number" class="form-control" name='quantity' placeholder="Enter quantity" min="1" max="$available" value='1' name='quantity' required >
+            </div>
+            <input value='$size' name='size' hidden>Length $size cm</input>
+            <br>
+            <button  class="btn btn-warning" type='Submit'>Add to Cart</button>
+        </div>
+        
+        </form>
+        _end;
         
         
         
         
         }
 
-        echo "<br>";
-        print_r($ski_sizes);
-        echo "<br>";
-        $ski_name = $product[0]['ski_name'];
-        $ski_img = $product[0]['product_img_path'];
        
-
-
-        echo <<<_end
-        <form class="card" style="width: 30rem;">
-        <h5 class="card-title text-center">$ski_name</h5>
-        
-        <div class="card-body">
-        <img src="$ski_img" class="card-img-top" alt="...">
-        <p value='$price'>$price</p>
-            <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Quantity</label>
-            <input type="number" class="form-control" name='quantity' placeholder="Enter quantity" min="25" max=>
-        </div>
-            <select class="form-select" aria-label="Default select" name='select_size'>
-            <option selected value="$ski_sizes[1]">$ski_sizes[1]</option>
-            <option value="$ski_sizes[0]">$ski_sizes[0]</option>
-        </select>
-            <br>
-            <a href="#" class="btn btn-warning">Add to Cart</a>
-        </div>
-        
-        </form>
-        _end;
-
-        
-
     }
     catch (PDOException $e){
         echo "Connection failed: " .$e->getMessage();
       }
     ?>  
+    </main>
 </body>
 </html>
