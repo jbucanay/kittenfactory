@@ -20,11 +20,11 @@
 </head>
 <body>
     <?php 
-    print_r($_SESSION['cart']);
-    echo "<br>";
-    echo $_GET['product_id'];
-    echo "<br>";
-    echo "<br>";
+    // print_r($_SESSION['cart']);
+    // echo "<br>";
+    // echo $_GET['product_id'];
+    // echo "<br>";
+    // echo "<br>";
 
 //     SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
 // FROM Orders
@@ -54,12 +54,10 @@ $db = "kitten_factory";
             $get_prod = $conn->prepare("SELECT ski_name,product_img_path FROM product WHERE product_id = $product_id");
             $get_prod->execute();
             $product = $get_prod->fetchAll(PDO::FETCH_ASSOC);
-            echo "product <br>";
-            print_r($product);
-            echo "<br>";
-            echo "<br>";
-            echo "<br>";
-            $qry = "SELECT prd.product_id,prd.ski_name, prd.product_img_path, ssq.ski_size,ssq.price,ssq.quantity_available
+            
+            
+        
+            $qry = "SELECT ssq.ski_size,ssq.price,ssq.quantity_available
             FROM product prd
             INNER JOIN ski_size_price_qty ssq
             ON prd.product_id = ssq.product_id
@@ -70,33 +68,51 @@ $db = "kitten_factory";
         $res = $prep->fetchAll(PDO::FETCH_ASSOC);
         print_r($res);
         echo "<br>";
-        print_r(count(($res)));
+        
         echo "<br>";
-
-
 
         for($i=0;$i<count($res);++$i){
         
-        $ski_name = $res[$i]['ski_name'];
+        
+        $price = 0;
+        $ski_sizes = array_column($res, 'ski_size');
+        echo $ski_sizes[$i];
         echo "<br>";
-        print_r($ski_name);
+        
+        
         
         
         
         
         }
+
+        echo "<br>";
+        print_r($ski_sizes);
+        echo "<br>";
+        $ski_name = $product[0]['ski_name'];
+        $ski_img = $product[0]['product_img_path'];
        
 
 
         echo <<<_end
         <form class="card" style="width: 30rem;">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title text-center">$ski_name</h5>
         
         <div class="card-body">
-        <img src="../Images/cfskis.png" class="card-img-top" alt="...">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+        <img src="$ski_img" class="card-img-top" alt="...">
+        <p value='$price'>$price</p>
+            <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Quantity</label>
+            <input type="number" class="form-control" name='quantity' placeholder="Enter quantity" min="25" max=>
         </div>
+            <select class="form-select" aria-label="Default select" name='select_size'>
+            <option selected value="$ski_sizes[1]">$ski_sizes[1]</option>
+            <option value="$ski_sizes[0]">$ski_sizes[0]</option>
+        </select>
+            <br>
+            <a href="#" class="btn btn-warning">Add to Cart</a>
+        </div>
+        
         </form>
         _end;
 
@@ -106,7 +122,6 @@ $db = "kitten_factory";
     catch (PDOException $e){
         echo "Connection failed: " .$e->getMessage();
       }
-    ?>
-    
+    ?>  
 </body>
 </html>
