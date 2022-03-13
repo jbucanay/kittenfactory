@@ -40,9 +40,10 @@
         </li>
       <?php
 
-      session_start();
+      session_start();    
 
       if(isset($_SESSION['username'])){
+        
         echo <<<_END
         <li class="nav-item">
           <a class="nav-link" href="../home/signout.php">Sign out</a>

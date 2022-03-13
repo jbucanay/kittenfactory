@@ -44,7 +44,7 @@ _END;
 for($j=0; $j<$rows; $j++)
 {
 
-    $row = $result->fetch_array(MYSQLI_ASSOC); 
+$row = $result->fetch_array(MYSQLI_ASSOC); 
 echo "<tr>";
 echo "<td>" . $row['order_id'] . "</td>";
 echo "<td>" . $row['product_id'] . "</td>";

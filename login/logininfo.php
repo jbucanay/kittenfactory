@@ -35,8 +35,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 		
 		$_SESSION['username']= $tmp_username;
 		
-       
-		echo "<a href='../vieworders/ViewOrders.php'><button> View Orders </button></a>";
+       header("Location: ../vieworders/ViewOrders.php");
 	}
 	else
 	{
