@@ -40,7 +40,9 @@
         </li>
       <?php
 
-      session_start();    
+      session_start(); 
+
+      $_SESSION['cart'] = Array();
 
       if(isset($_SESSION['username'])){
         
