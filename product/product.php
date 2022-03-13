@@ -62,7 +62,7 @@ $db = "kitten_factory";
         $prep = $conn->prepare($qry);
         $prep->execute();
         $res = $prep->fetchAll(PDO::FETCH_ASSOC);
-        // print_r($res);
+       
 
         for($i=0;$i<count($res);++$i){
         
