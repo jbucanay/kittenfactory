@@ -74,17 +74,22 @@ $db = "kitten_factory";
         
         echo <<<_end
         <form class="card" style="width: 30rem;" id='form_card' action="../viewcart/ViewCart.php" method="post">
-        <h5 class="card-title text-center" value='$ski_name' name='ski_name'>$ski_name</h5>
+        <h5 class="card-title text-center">$ski_name</h5>
+        <input value='$ski_name' hidden name='ski_name'></input>
         
         <div class="card-body">
-        <img src="$ski_img" class="card-img-top" alt="..." value="$ski_img" name='image'>
+        <img src="$ski_img" class="card-img-top" alt="..." value="$ski_img">
+        <input value='$ski_img' hidden name='image'></input>
         <input value='$product_id' name='product_id' hidden></input>
         <input value='$price' name='price' hidden>$$price</input>
+        <input value='$available' name='available' hidden></input>
             <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Quantity</label>
             <input type="number" class="form-control" name='quantity' placeholder="Enter quantity" min="1" max="$available" value='1' name='quantity' required >
             </div>
             <input value='$size' name='size' hidden>Length $size cm</input>
+            
+            
             <br>
             <button  class="btn btn-warning" type='Submit'>Add to Cart</button>
         </div>

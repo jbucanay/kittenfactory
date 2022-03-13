@@ -1,0 +1,12 @@
+#cart_main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#card_cont {
+    margin: 1%;
+}
+
+#section {
+    margin: 1%
+}
