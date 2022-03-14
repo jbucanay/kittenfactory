@@ -94,7 +94,9 @@
 		<?php 
 		echo <<<_end
 		<p>Subtotal: $$total_cost</p>
+		<div><small>Shipping & taxes calculated at checkout</small></div>
 		<button  class="btn btn-warning" type='Submit'>Checkout</button>
+		
 		
 		_end;
 		
