@@ -30,6 +30,11 @@
 			$db = "kitten_factory";
 
 		try {
+
+			if(empty($_SESSION['username'])){
+				header("Location: ../login/login.php");
+			}
+
 			$conn = new PDO("mysql:host=$sn;dbname=$db", $un,$pw);
         	$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 			
