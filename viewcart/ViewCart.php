@@ -33,7 +33,9 @@
 			$conn = new PDO("mysql:host=$sn;dbname=$db", $un,$pw);
         	$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 			
+			if(isset($_POST['product_id'])){
 			array_push($_SESSION['cart'], $_POST);
+			}
 			$cart = $_SESSION['cart'];
 			
 
@@ -81,7 +83,7 @@
 		
 			
 			
-
+		
 		}
 		catch (PDOException $e){
 			echo "Connection failed: " .$e->getMessage();
