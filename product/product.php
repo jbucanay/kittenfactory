@@ -69,6 +69,8 @@ $db = "kitten_factory";
         $price = $res[$i]['price'];
         $size = $res[$i]['ski_size'];
         $available = $res[$i]['quantity_available'];
+        $placeholder =  $res[$i]['quantity_available'] > 0 ? 'Enter quantity' : "Out of Stock";
+
         
         
         
@@ -85,7 +87,7 @@ $db = "kitten_factory";
         <input value='$available' name='available' hidden></input>
             <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Quantity</label>
-            <input type="number" class="form-control" name='quantity' placeholder="Enter quantity" min="1" max="$available" value='1' name='quantity' required >
+            <input type="number" class="form-control" name='quantity' placeholder="$placeholder" min="1" max="$available" name='quantity' required >
             </div>
             <input value='$size' name='size' hidden>Length $size cm</input>
             
