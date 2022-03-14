@@ -52,7 +52,7 @@ CREATE TABLE product (
 	-- manufacturing_cost DECIMAL(8,2) NOT NULL,
 	-- ski_width DECIMAL(4,2) NOT NULL,
 	description BLOB,
-	product_img_path VARCHAR(200),
+	product_img_path VARCHAR(200)
 	PRIMARY KEY(product_id)
 )
 ;
