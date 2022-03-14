@@ -1,9 +1,9 @@
 <?php
 include_once "../home/home.php";
-$hn = 'localhost:3306';
+$hn = 'localhost:8889';
 $db = 'kitten_factory';
 $un = 'root';
-$pw = '';
+$pw = 'root';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);

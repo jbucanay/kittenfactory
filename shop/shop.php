@@ -71,7 +71,7 @@ if(isset($_SESSION['username'])){
 	echo $_SESSION['username'];
 
 }
-
+}
 catch (PDOException $e){
   echo "Connection failed: " .$e->getMessage();
 }
