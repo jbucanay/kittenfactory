@@ -1,3 +1,4 @@
+
 CREATE DATABASE kitten_factory
 ;
 USE kitten_factory
@@ -134,3 +135,4 @@ CREATE TABLE return_table (
 	FOREIGN KEY(product_id, ski_size) REFERENCES ski_size_price_qty(product_id, ski_size)
 )
 ;
+

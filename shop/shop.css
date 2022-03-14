@@ -1,4 +1,22 @@
-#main {
+/* #main {
     display: flex;
     margin: 3%;
+} */
+
+
+.atag {
+    text-decoration: none;
+    color: black;
+    margin: 40px;
 }
+
+.atag:hover {
+    color: black;
+    transform: scale(1.1);
+    
+}
+
+#shop_main {
+    display: flex;
+}
+

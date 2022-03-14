@@ -32,15 +32,18 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 	{
 		echo "Login Successful! Welcome back $tmp_username<br>";
 		
-		session_start();
-		$_SESSION['username']= $tmp_username;
 		
-       
-		echo "<a href='../vieworders/ViewOrders.php'><button> View Orders </button></a>";
+		$_SESSION['username']= $tmp_username;
+		if(empty($_SESSION['cart'])){
+			$_SESSION['cart'] = array();
+		}
+		
+       header("Location: ../shop/shop.php");
 	}
 	else
 	{
-		echo "Login Error<br>";
+		header("Location: login.php");
+	
 	}
 	
 }
