@@ -44,7 +44,6 @@ try {
         <div class="card-body">
         <h5 class="card-title">$res[address]</h5>
         <p class="card-text">Username: $res[username]</p>
-        <a href="#" class="btn btn-dark">Edit account</a>
         </div>
     </div>
     _end;

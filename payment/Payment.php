@@ -13,14 +13,6 @@
 
     </style>
 <?php 
-session_start();
-if(isset($_SESSION['username'])){
-	$username = $_SESSION['username'];
-		
-	echo "Welcome back $username <br>";
-	}else{
-	echo "Please login.<br>";
-}
 
 
 include_once "../home/home.php";

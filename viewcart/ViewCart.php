@@ -102,7 +102,7 @@
 		echo <<<_end
 		<p>Subtotal: $$total_cost</p>
 		<div><small>Shipping & taxes calculated at checkout</small></div>
-		<button  class="btn btn-warning" type='Submit'>Checkout</button>
+		<a href='../payment/Payment.php'><button  class="btn btn-warning" type='Submit' >Checkout</button></a>
 		
 		
 		_end;
