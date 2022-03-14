@@ -38,7 +38,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 			$_SESSION['cart'] = array();
 		}
 		
-       header("Location: ../vieworders/ViewOrders.php");
+       header("Location: ../shop/shop.php");
 	}
 	else
 	{
