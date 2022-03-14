@@ -18,17 +18,32 @@
     ?>
     
 </head>
-	<body>
-		<h2> Employee Portal </h2>
-		<br>
-		<a href='../view_employees/view_employees.php'> 
-			<button> View Employees </button>
-		</a>
-		<a href='../customer_management/customer_management.php'>
-			<button> View and Manage Customers </button>
-		</a>
-	</body>
-
+<body >
+<main id='main'>
+<div class="card" style="width: 18rem;">
+  <img src="../images/cfskis.png" class="card-img-top" alt="..." >
+  	<a href='../carbonfiber/carbonfiber.php' class='btn btn-info' >
+  <div class="card-body">
+    <p class="card-text">Carbon Fiber</p>
+  </div>
+  </a>
+</div>
+<div class="card" style="width: 18rem;">
+  <img src="../images/hybridskis.png" class="card-img-top" alt="...">
+    <a href='../hybrid/hybrid.php' class='btn btn-info'>
+  <div class="card-body">
+    <p class="card-text">Hybrid</p>
+  </div>
+  </a>
+</div>
+</main>
+</body>
+</html>
 
 <?php
+
+if(isset($_SESSION['username'])){
+	echo $_SESSION['username']
+}
+
 ?>

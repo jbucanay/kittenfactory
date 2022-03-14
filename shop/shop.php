@@ -28,6 +28,7 @@ $pw = "root";
 $db = "kitten_factory";
 
 
+
 try 
 {
   $conn = new PDO("mysql:host=$sn;dbname=$db", $un,$pw);
@@ -64,6 +65,10 @@ try
   
   
   
+
+
+if(isset($_SESSION['username'])){
+	echo $_SESSION['username'];
 
 }
 

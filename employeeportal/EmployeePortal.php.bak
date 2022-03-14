@@ -21,7 +21,7 @@
 	<body>
 		<h2> Employee Portal </h2>
 		<br>
-		<a href='../view_employees/view_employees.php'> 
+		<a href='../team_and_org_chart/team_and_org_chart.php'> 
 			<button> View Employees </button>
 		</a>
 		<a href='../customer_management/customer_management.php'>
