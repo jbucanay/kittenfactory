@@ -39,7 +39,10 @@
           <a class="nav-link" aria-current="page" href="../about/aboutus.php">About</a>
         </li>
       <?php
-
+$sn = "localhost:8889";
+$un = "root";
+$pw = "root";
+$db = "kitten_factory";
       session_start(); 
 
       
@@ -85,7 +88,51 @@
         </a>
         _end;
     }
-       
+    class User{
+	
+      public $username;
+      public $roles = Array();
+    
+      function __construct($username){
+        $sn = "localhost:8889";
+        $un = "root";
+        $pw = "root";
+        $db = "kitten_factory";
+    
+        $conn = new mysqli($sn,$un,$pw,$db);          
+        $this->username = $username;
+      
+        $getcustroles = "SELECT * FROM customer WHERE username='$username' ";
+        $getadminroles = "SELECT * FROM employee JOIN employee_role ON employee.employee_id=employee_role.employee_id WHERE username='$username'";
+        $custroleresult = $conn->query($getcustroles);
+        $adminroleresult = $conn->query($getadminroles);
+        if(!$custroleresult && !$adminroleresult) die($conn->error);
+        
+        $roles = Array();
+        if($custroleresult){
+          $custrows = $custroleresult->num_rows;
+          for($i=0; $i<$custrows; $i++){
+            $rowcust = $custroleresult->fetch_array(MYSQLI_ASSOC);			
+            $roles[] = $rowcust['role'];
+          }	
+        }
+        if($adminroleresult){
+          $adminrows = $adminroleresult->num_rows;
+    
+          for($i=0; $i<$adminrows; $i++){
+            $rowadmin = $adminroleresult->fetch_array(MYSQLI_ASSOC);			
+            $roles[] = $rowadmin['role'];
+          }	
+        }
+        $this->roles = $roles;
+      }
+    
+      function getRoles(){
+        return $this->roles;
+      }
+    
+    }
+    
        ?>
         </li>
       </ul>
@@ -102,5 +149,9 @@
 </body>
 	
 
+    
 
-</html>
+
+
+
+    </html>

@@ -10,7 +10,31 @@
 </html>
 
 <?php
-require_once("../login/logininfo.php");
+ob_start();
+require_once "../login/logininfo.php";
+require_once "../home/home.php";
+
+ $page_roles = array('admin','employee');
+ $found=0;
+ 
+ if(isset($_SESSION['username'])){
+ $userobj = new User($_SESSION['username']);
+ $user_roles = $userobj->getRoles();
+ 
+	 foreach ($user_roles as $urole){
+		 foreach ($page_roles as $prole){
+			 if($urole==$prole){
+ 
+				 $found=1;
+			 }
+		 }
+	 }
+  }
+	 if(!$found){
+   
+		 header("Location: ../home/unauthorized.php");
+	 }
+
 
 $query = "select first_name, last_name, customer_id, address from customer";
 
@@ -34,11 +58,13 @@ echo <<<_END
 	Address: $row[address]
 	
 	<a href="edit_customer.php?customer_id=$row[customer_id]">
-		<button> Edit Customer </button>
+		<button class="btn btn-dark"> Edit Customer </button>
 	</a>
 	</pre>
 	
 _END;
 }
-$conn->close();
+ob_end();
+
 ?>
+

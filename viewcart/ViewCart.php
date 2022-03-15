@@ -8,6 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <style type="text/css">
 	<?php
+	ob_start();
 	include "cart.css";
 	?>
 
@@ -24,10 +25,27 @@
 		
 		<main id='cart_main'>
 			<?php
-			$sn = "localhost:8889";
-			$un = "root";
-			$pw = "root";
-			$db = "kitten_factory";
+			$page_roles = array('admin','customer','employee');
+			$found=0;
+			
+			if(isset($_SESSION['username'])){
+			$userobj = new User($_SESSION['username']);
+			$user_roles = $userobj->getRoles();
+			
+				foreach ($user_roles as $urole){
+					foreach ($page_roles as $prole){
+						if($urole==$prole){
+			
+							$found=1;
+						}
+					}
+				}
+			}
+				if(!$found){
+			  
+					header("Location: ../home/unauthorized.php");
+				}
+			
 
 		try {
 
@@ -106,7 +124,7 @@
 		
 		
 		_end;
-		
+		ob_end();
 		
 		?>
 		</section>
