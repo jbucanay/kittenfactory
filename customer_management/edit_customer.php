@@ -10,7 +10,31 @@
 </html>
 
 <?php
+ob_start();
 require_once("../login/logininfo.php");
+require_once "../home/home.php";
+
+ $page_roles = array('admin','employee');
+ $found=0;
+ 
+ if(isset($_SESSION['username'])){
+ $userobj = new User($_SESSION['username']);
+ $user_roles = $userobj->getRoles();
+ 
+	 foreach ($user_roles as $urole){
+		 foreach ($page_roles as $prole){
+			 if($urole==$prole){
+ 
+				 $found=1;
+			 }
+		 }
+	 }
+  }
+	 if(!$found){
+   
+		 header("Location: ../home/unauthorized.php");
+	 }
+
 
 if(isset($_GET['customer_id'])){
 
@@ -52,7 +76,7 @@ echo <<<_END
 		Delete Customer:
 	</h4>
 	<form method='post' name='delete' action='process_delete_cust.php?=$customer_id'>
-		<button>Delete Customer</button>
+		<button class="btn btn-dark">Delete Customer</button>
 		<input type='hidden' name='customer_id' value=$customer_id>
 	</form>
 	</pre>
@@ -63,4 +87,5 @@ _END;
 
 $conn->close();
 }
+ob_end();
 ?>

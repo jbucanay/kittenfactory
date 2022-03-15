@@ -1,4 +1,5 @@
 
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,26 +9,50 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <style type="text/css">
       <?php
+      ob_start();
       include 'orders.css'
       ?>
 
     </style>
     <?php 
         include_once "../home/home.php";
+        require_once "../login/logininfo.php";
         
+   $page_roles = array('admin','customer','employee');
+   $found=0;
+   
+   if(isset($_SESSION['username'])){
+    $username=$_SESSION['username'];
+    $userobj = new User($_SESSION['username']);
+    $user_roles = $userobj->getRoles();
+   
+       foreach ($user_roles as $urole){
+           foreach ($page_roles as $prole){
+               if($urole==$prole){
+   
+                   $found=1;
+               }
+           }
+       }
+   
+       if(!$found){
+     
+           header("Location: ../home/unauthorized.php");
+       }
+   }
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
         
 $query = "SELECT * FROM order_line ol JOIN order_table ot ON 
 ol.order_id=ot.order_id JOIN customer c ON c.customer_id=ot.customer_id 
-WHERE c.username='$username'";
+WHERE c.username= '$username'";
         
 $result = $conn->query($query); 
 if(!$result) die($conn->error);
         
 $rows = $result->num_rows;
-        
+  
 echo <<<_END
     <title>Login</title>
 </head>
@@ -63,7 +88,8 @@ Order ID: <input type='text' name='order_id'>
 <br>
 Quantity: <input type='text' name='quantity'>
 <br>
-<input type='submit' value='Return'>
+<button type="submit" class="btn btn-dark">
+        <a target="_self" >Return</a></button>
 </form>
 </div>
 
@@ -72,14 +98,15 @@ Quantity: <input type='text' name='quantity'>
 <form method='POST'>
 Order ID: <input type='text' name='order_id_cancel'>
 <br>
-<input type='submit' value='Cancel'>
+<button type="submit" class="btn btn-dark">
+        <a target="_self" >Cancel</a></button>
 </form>
 </div>
 
 </body>
 <footer>
-<a href='../payment/Payment.php'><button> Make Payment </button></a>
-<a href='../viewcart/ViewCart.php'><button> View Cart </button></a>
+<a href='../payment/Payment.php'><button  class="btn btn-warning" type='Submit' >Make Payment</button></a>
+<a href='../viewcart/ViewCart.php'><button class="btn btn-warning" type='Submit'> View Cart </button></a>
 </footer>
 _END;
 
@@ -122,4 +149,5 @@ if(!$canceltable) die($conn->error);
 			
 $rows = $cancel->num_rows;
 }
+ob_end();
 ?>
