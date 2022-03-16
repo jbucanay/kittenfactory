@@ -9,6 +9,7 @@
     <title>Manage Account</title>
     <style type="text/css">
       <?php
+      ob_start();
       include 'account.css';
       
       ?>
@@ -19,13 +20,35 @@
     ?>
 </head>
 <body>
+<footer>
+    <a href='../employeeportal/employeeportal.php'>
+			<button  class="btn btn-dark"> Employee Portal </button>
+		</a>
+    </footer>
     <?php 
 
-$sn = "localhost:8889";
-$un = "root";
-$pw = "root";
-$db = "kitten_factory";
 
+$page_roles = array('admin','customer','employee');
+$found=0;
+
+if(isset($_SESSION['username'])){
+$userobj = new User($_SESSION['username']);
+$user_roles = $userobj->getRoles();
+
+    foreach ($user_roles as $urole){
+        foreach ($page_roles as $prole){
+            if($urole==$prole){
+
+                $found=1;
+            }
+        }
+    }
+
+    if(!$found){
+  
+        header("Location: ../home/unauthorized.php");
+    }
+}
 
 $user = $_SESSION['username'];
 
@@ -33,7 +56,9 @@ try {
     $conn = new PDO("mysql:host=$sn;dbname=$db", $un,$pw);
     $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $res = $conn->query("SELECT * FROM customer where username = '$user'")->fetch(PDO::FETCH_ASSOC);
-    // print_r($res);
+    if(!$res){
+        $res = $conn->query("SELECT * FROM employee where username = '$user'")->fetch(PDO::FETCH_ASSOC);
+    }
     
     echo "<br>";
     echo <<<_end
@@ -61,10 +86,11 @@ catch (PDOException $e){
     
     
     
-    
+    ob_end();
     ?>
     
 </body>
+
 </html>
 
 

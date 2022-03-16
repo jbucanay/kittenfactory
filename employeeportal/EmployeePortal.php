@@ -8,6 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <style type="text/css">
       <?php
+      ob_start();
       include 'shop.css'
       ?>
 
@@ -15,20 +16,44 @@
     <?php 
         include_once "../home/home.php";
         
+   $page_roles = array('admin','employee');
+   $found=0;
+   
+   if(isset($_SESSION['username'])){
+   $userobj = new User($_SESSION['username']);
+   $user_roles = $userobj->getRoles();
+   
+       foreach ($user_roles as $urole){
+           foreach ($page_roles as $prole){
+               if($urole==$prole){
+   
+                   $found=1;
+               }
+           }
+       }
+    }
+       if(!$found){
+     
+           header("Location: ../home/unauthorized.php");
+       }
+   
+   
     ?>
     
 </head>
 	<body>
 		<h2> Employee Portal </h2>
 		<br>
+
 		<a href='../view_employees/view_employees.php'> 
-			<button> View Employees </button>
+			<button  class="btn btn-warning"> View Employees </button>
 		</a>
 		<a href='../customer_management/customer_management.php'>
-			<button> View and Manage Customers </button>
+			<button  class="btn btn-warning"> View and Manage Customers </button>
+		</a>
+        <a href='../manageorders/manageorders.php'>
+			<button  class="btn btn-warning"> View and Manage Orders </button>
 		</a>
 	</body>
 
-
-<?php
-?>
+</html>

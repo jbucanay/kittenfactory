@@ -8,6 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <style type="text/css">
       <?php
+	  ob_start();
       include 'shop.css'
       ?>
 
@@ -21,6 +22,27 @@ require_once "../login/logininfo.php";
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
+$page_roles = array('admin','customer','employee');
+$found=0;
+
+if(isset($_SESSION['username'])){
+$userobj = new User($_SESSION['username']);
+$user_roles = $userobj->getRoles();
+
+	foreach ($user_roles as $urole){
+		foreach ($page_roles as $prole){
+			if($urole==$prole){
+
+				$found=1;
+			}
+		}
+	}
+}
+	if(!$found){
+  
+		header("Location: ../home/unauthorized.php");
+	}
+
 	
 echo <<<_END
     
@@ -33,11 +55,12 @@ echo <<<_END
 			<br>
 			Credit Card <input type='text' name='credit_card'>
 			<br>
-			<input type='submit' value='Process Payment'>
+			<button type="submit" class="btn btn-dark">
+        <a target="_self" >Process Payment</a></button>
 			</form>
 			<footer>
-				<a href='../vieworders/ViewOrders.php'><button> View Orders </button></a>
-				<a href='../viewcart/ViewCart.php'><button> View Cart </button></a>
+				<a href='../vieworders/ViewOrders.php'><button  class="btn btn-warning"> View Orders </button></a>
+				<a href='../viewcart/ViewCart.php'><button  class="btn btn-warning"> View Cart </button></a>
 			</footer>
 		</body>
 
@@ -54,4 +77,5 @@ if (isset($_POST['credit_card'])) {
 			
 	$rows = $payment->num_rows;
 	}
+	ob_end();
 ?>
