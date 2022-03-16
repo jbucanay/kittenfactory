@@ -129,7 +129,7 @@
     catch (PDOException $e){
         echo "Connection failed: " .$e->getMessage();
       }
-      ob_end();
+    //   ob_end();
     ?>  
     </main>
 </body>

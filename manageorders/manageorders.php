@@ -69,10 +69,10 @@ for($j=0; $j<$rows; $j++)
 
     $row = $result->fetch_array(MYSQLI_ASSOC); 
 echo "<tr>";
-echo "<td>" . $row[order_id] . "</td>";
-echo "<td>" . $row[product_id] . "</td>";
-echo "<td>" . $row[quantity_ordered] . "</td>";
-echo "<td>" . $row[price_paid] . "</td>";
+echo "<td>" . $row['order_id'] . "</td>";
+echo "<td>" . $row['product_id'] . "</td>";
+echo "<td>" . $row['quantity_ordered'] . "</td>";
+echo "<td>" . $row['price_paid'] . "</td>";
 echo "</tr>";
 }
 echo "</table>";
@@ -144,6 +144,6 @@ if(!$canceltable) die($conn->error);
 			
 $rows = $cancel->num_rows;
 }
-ob_end();
+// ob_end();
 ?>
 

@@ -64,7 +64,7 @@ echo <<<_END
 	
 _END;
 }
-ob_end();
+// ob_end();
 
 ?>
 

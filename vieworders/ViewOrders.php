@@ -149,5 +149,5 @@ if(!$canceltable) die($conn->error);
 			
 $rows = $cancel->num_rows;
 }
-ob_end();
+// ob_end();
 ?>

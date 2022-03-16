@@ -90,7 +90,7 @@ catch (PDOException $e){
 }
 
 
-ob_end();
+// ob_end();
 
 ?>
 </main>

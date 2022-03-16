@@ -117,6 +117,7 @@
 		</main>
 		<section id='section'>
 		<?php 
+		if(!empty($_SESSION['cart'])){
 		echo <<<_end
 		<p>Subtotal: $$total_cost</p>
 		<div><small>Shipping & taxes calculated at checkout</small></div>
@@ -124,7 +125,10 @@
 		
 		
 		_end;
-		ob_end();
+		} else {
+			echo "<strong>You have an empty cart</strong>";
+		}
+		// ob_end();
 		
 		?>
 		</section>

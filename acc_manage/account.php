@@ -56,6 +56,7 @@ try {
     $conn = new PDO("mysql:host=$sn;dbname=$db", $un,$pw);
     $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $res = $conn->query("SELECT * FROM customer where username = '$user'")->fetch(PDO::FETCH_ASSOC);
+    
     if(!$res){
         $res = $conn->query("SELECT * FROM employee where username = '$user'")->fetch(PDO::FETCH_ASSOC);
     }
@@ -67,7 +68,6 @@ try {
         $res[first_name] $res[last_name]
         </div>
         <div class="card-body">
-        <h5 class="card-title">$res[address]</h5>
         <p class="card-text">Username: $res[username]</p>
         </div>
     </div>
@@ -86,7 +86,7 @@ catch (PDOException $e){
     
     
     
-    ob_end();
+    // ob_end();
     ?>
     
 </body>
