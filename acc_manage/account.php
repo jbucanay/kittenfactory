@@ -21,9 +21,13 @@
 </head>
 <body>
 <footer>
+    <a href='../vieworders/vieworders.php'>
+			<button  class="btn btn-dark"> View Orders </button>
+		</a>
     <a href='../employeeportal/employeeportal.php'>
 			<button  class="btn btn-dark"> Employee Portal </button>
 		</a>
+        
     </footer>
     <?php 
 

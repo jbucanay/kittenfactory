@@ -36,11 +36,11 @@ try {
 
         $qry = "SELECT * FROM customer WHERE username = '$username'";
         $res = $conn->query($qry)->fetchAll(PDO::FETCH_ASSOC);
-        // print_r($res);
+       
 
         if(!$res){
-            $newuserquery = "INSERT INTO customer (first_name, last_name, address, username, password) 
-            VALUES ('$first_name','$last_name','$address','$username','$token')";
+            $newuserquery = "INSERT INTO customer (first_name, last_name, address, username, password, role) 
+            VALUES ('$first_name','$last_name','$address','$username','$token', 'customer')";
             $result = $conn->query($newuserquery);
             if(!$result){
                 die($conn->error);
@@ -51,7 +51,7 @@ try {
            
         
         } else {
-            // should add javascipt here to create an error on the page
+
             echo "User name already taken try again";
             header("Location: cust_signup.php");
         }
