@@ -61,7 +61,7 @@ echo <<<_END
 <h2> View Orders </h2>
 <table>
 <tr>
-<th>Order ID</th><th>Product ID</th><th>Quantity</th><th>Price</th>
+<th>Order ID</th><th>Product ID</th><th>Ski Size</th><th>Quantity</th><th>Price</th>
 </tr>
 _END;
 for($j=0; $j<$rows; $j++)
@@ -71,6 +71,7 @@ for($j=0; $j<$rows; $j++)
 echo "<tr>";
 echo "<td>" . $row['order_id'] . "</td>";
 echo "<td>" . $row['product_id'] . "</td>";
+echo "<td>" . $row['ski_size'] . "</td>";
 echo "<td>" . $row['quantity_ordered'] . "</td>";
 echo "<td>" . $row['price_paid'] . "</td>";
 echo "</tr>";
@@ -78,23 +79,29 @@ echo "</tr>";
 echo "</table>";
 echo <<<_END
 <h2> Return Order</h2>
-<form method='POST'>
+<form method="post" target="_self">
 Order ID: <input type='text' name='order_id'>
+<br>
+Product ID: <input type='text' name='product_id'>
+<br>
+Ski Size: <input type='text' name='ski_size'>
 <br>
 Quantity: <input type='text' name='quantity'>
 <br>
 <button type="submit" class="btn btn-dark">
-        <a target="_self" >Return</a></button>
+        <a>Submit</a>
+</button>
 </form>
 </div>
 
 <div class="card">
 <h2>Cancel Order</h2>
-<form method='POST'>
+<form method='POST' target="_self">
 Order ID: <input type='text' name='order_id_cancel'>
 <br>
 <button type="submit" class="btn btn-dark">
-        <a target="_self" >Cancel</a></button>
+        <a>Cancel</a>
+</button>
 </form>
 </div>
 
@@ -105,18 +112,19 @@ Order ID: <input type='text' name='order_id_cancel'>
 </footer>
 _END;
 
-if (isset($_POST['order_id']) && isset($_POST['quantity'])) {
+if (isset($_POST['order_id']) && isset($_POST['product_id']) && isset($_POST['ski_size']) && isset($_POST['quantity'])) {
 $order_id = $_POST['order_id'];
+$product_id = $_POST['product_id'];
+$ski_size = $_POST['ski_size'];
 $quantity = $_POST['quantity'];
 
-$returnorder = "INSERT INTO return_table (return_dttm,order_id,quantity_returned) 
-VALUES (CURRENT_TIMESTAMP,'$order_id','$quantity')";
+$returnorder = "INSERT INTO return_table (return_dttm,order_id,product_id,ski_size,quantity_returned) VALUES (CURRENT_TIMESTAMP, $order_id, $product_id, $ski_size, $quantity)";
         
 $return = $conn->query($returnorder); 
 if(!$return) die($conn->error);
-        
-$rows = $return->num_rows;
 }
+
+
 if (isset($_POST['order_id_cancel'])) {
 $order_id_cancel = $_POST['order_id_cancel'];
 
@@ -124,6 +132,7 @@ $order_id_cancel = $_POST['order_id_cancel'];
 
 $cancelorderreturn = "DELETE FROM return_table
 WHERE order_id = '$order_id_cancel' ";
+
 
 $cancelorder = "DELETE FROM order_line
 WHERE order_id = '$order_id_cancel' ";
@@ -142,7 +151,6 @@ if(!$cancel) die($conn->error);
 $canceltable = $conn->query($cancelordertable); 
 if(!$canceltable) die($conn->error);
 			
-$rows = $cancel->num_rows;
 }
 // ob_end();
 ?>
