@@ -1,10 +1,7 @@
 <?php 
 
 //database login creditials
-$sn = "localhost:8889";
-$un = "root";
-$pw = "root";
-$db = "kitten_factory";
+include_once "../home/home.php";
 
 try {
 

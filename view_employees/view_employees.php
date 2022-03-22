@@ -10,11 +10,11 @@
 </html>
 
 <?php
-require_once("../login/logininfo.php");
+include_once "../home/home.php";
 
 $query = "select first_name, last_name, position, product_id from employee";
 
-$conn = new mysqli($hn, $un, $pw, $db);
+$conn = new mysqli($sn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
 $result = $conn->query($query);

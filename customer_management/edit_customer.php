@@ -11,7 +11,7 @@
 
 <?php
 ob_start();
-require_once("../login/logininfo.php");
+
 require_once "../home/home.php";
 
  $page_roles = array('admin','employee');
@@ -42,7 +42,7 @@ $customer_id = $_GET['customer_id'];
 
 $query = "select first_name, last_name, address from customer where customer_id = $customer_id";
 
-$conn = new mysqli($hn, $un, $pw, $db);
+$conn = new mysqli($sn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
 $result = $conn->query($query);

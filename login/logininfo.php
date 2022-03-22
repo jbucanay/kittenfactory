@@ -1,11 +1,8 @@
 <?php
 include_once "../home/home.php";
-$hn = 'localhost:8889';
-$db = 'kitten_factory';
-$un = 'root';
-$pw = 'root';
 
-$conn = new mysqli($hn, $un, $pw, $db);
+
+$conn = new mysqli($sn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 if (isset($_POST['username']) && isset($_POST['password'])) {
 	

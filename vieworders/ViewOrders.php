@@ -16,7 +16,7 @@
     </style>
     <?php 
         include_once "../home/home.php";
-        require_once "../login/logininfo.php";
+
         
    $page_roles = array('admin','customer','employee');
    $found=0;
@@ -41,7 +41,7 @@
        }
    }
 
-$conn = new mysqli($hn, $un, $pw, $db);
+$conn = new mysqli($sn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
         
 $query = "SELECT * FROM order_line ol JOIN order_table ot ON 
@@ -62,7 +62,7 @@ echo <<<_END
 <h2> View Orders </h2>
 <table>
 <tr>
-<th>Order ID</th><th>Product ID</th><th>Quantity ID</th><th>Price ID</th>
+<th>Order ID</th><th>Product ID</th><th>Quantity</th><th>Price</th>
 </tr>
 _END;
 
@@ -149,5 +149,5 @@ if(!$canceltable) die($conn->error);
 			
 $rows = $cancel->num_rows;
 }
-// ob_end();
+
 ?>

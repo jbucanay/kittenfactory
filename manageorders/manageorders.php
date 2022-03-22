@@ -17,7 +17,6 @@
 <?php 
 
 include_once "../home/home.php";
-require_once "../login/logininfo.php";
 
 $page_roles = array('admin','employee');
    $found=0;
@@ -41,7 +40,7 @@ $page_roles = array('admin','employee');
        }
    }
 
-$conn = new mysqli($hn, $un, $pw, $db);
+$conn = new mysqli($sn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
         
 $query = "SELECT * FROM order_line";

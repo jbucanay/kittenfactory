@@ -11,7 +11,7 @@
 
 <?php
 ob_start();
-require_once "../login/logininfo.php";
+
 require_once "../home/home.php";
 
  $page_roles = array('admin','employee');
@@ -38,7 +38,7 @@ require_once "../home/home.php";
 
 $query = "select first_name, last_name, customer_id, address from customer";
 
-$conn = new mysqli($hn, $un, $pw, $db);
+$conn = new mysqli($sn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
 $result = $conn->query($query);
