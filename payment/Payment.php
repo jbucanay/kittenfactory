@@ -19,7 +19,7 @@
 include_once "../home/home.php";
 
 
-$conn = new mysqli($hn, $un, $pw, $db);
+$conn = new mysqli($sn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
 $page_roles = array('admin','customer','employee');
@@ -75,7 +75,5 @@ if (isset($_POST['credit_card'])) {
 	$payment = $conn->query($insertpayment); 
 	if(!$payment) die($conn->error);
 			
-	$rows = $payment->num_rows;
 	}
-	ob_end();
 ?>
